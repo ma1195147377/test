@@ -1,0 +1,3 @@
+com\zheng\entity\User.class
+com\zheng\dao\UserDao.class
+com\zheng\utils\MybatisUtils.class

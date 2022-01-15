@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zheng.dao.UserDao">
+    <select id="selectUsers" resultType="com.zheng.entity.User">
+        select id,name,pwd,hobby from user order by id
+    </select>
+
+    <insert id="insertUser">
+        insert into user(name,pwd,hobby) values(#{name},#{pwd},#{hobby})
+    </insert>
+
+    <update id="updateUser">
+        update user set name=#{name},pwd=#{pwd},hobby=#{hobby} where id=#{id}
+    </update>
+    <select id="newSelect" resultType="com.zheng.entity.User">
+        select id,name,pwd,hobby from user
+        <where>
+            <if test="name!=null">
+                name like '%' #{name} '%'
+            </if>
+            <if test="hobby!=null">
+                and hobby like '%' #{hobby} '%'
+            </if>
+        </where>
+    </select>
+</mapper>
